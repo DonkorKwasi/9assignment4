@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Search by Title
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,36 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Search by Title</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" >
+    <div id = display>
+      <div>
+      <ion-input placeholder="Enter a anime name here!"[(ngModel)]="title"></ion-input> 
+      <ion-button (click) ="search()"> search</ion-button>
+    </div>
+    <div *ngIf ="results;" >
+  <img style="width:200px;height:200px;"   [src] = "results[counter].image_url" >
+  <div style=" display: flex; height: 100%;">
+  <ion-label>Anime Title:{{results[counter].title}}   </ion-label>
+  <ion-label>Anime Synopsis:{{results[counter].synopsis}}   </ion-label>
+  <ion-label>(Score: {{results[counter].score}}) </ion-label>
+  </div>
+
+
+  <div>
+  
+   <ion-button (click) ="prev()">prev</ion-button>
+   <ion-button (click) = "add()">add to faves</ion-button>
+   <ion-button (click) ="next()">next</ion-button>
+  </div>
+</div>
+  </div>
+  <div>
+    <ion-button [routerLink]="['/seasonal-search']" routerLinkActive="router-link-active" >seasonal search</ion-button>
+    <ion-button [routerLink]="['/fave-anime']" routerLinkActive="router-link-active" >fave anime</ion-button>
+  </div>
   </div>
 </ion-content>

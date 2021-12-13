@@ -1,0 +1,34 @@
+<ion-header>
+  
+  <ion-toolbar>
+    <ion-back-button defaultHref="/home"></ion-back-button>
+    <ion-title>My Fave Anime</ion-title>
+  </ion-toolbar>
+ 
+</ion-header>
+
+<ion-content>
+
+  <div id='container'>
+    <ion-title size="large">Here is a list of anime you have saved(will be empty if no anime have been added to faves yet)</ion-title>
+<div *ngIf = "animes.length == 0">
+    <ion-label ><p>(this is empty as no anime have been added to faves yet)</p></ion-label>
+    </div>
+    <ion-list>
+<ion-item button  *ngFor= "let anime of animes" (click)="chose(anime)">
+  
+<img [src] = 'anime.img'style="width:50px;height:50px;" >
+<ion-label>{{anime.title}}</ion-label>
+<ion-label>  Personal Rating:{{anime.personalScore}}</ion-label>
+
+</ion-item>
+
+    </ion-list>
+<div if>
+  <ion-button (click)="swapUp()" style="font-size : 9px;">swap selected anime up one personal preference</ion-button>
+  <ion-button (click)="swapDown()"  style="font-size : 9px;">swap selected anime down one personal preference</ion-button>
+  <ion-button (click)="delete()"> delete all saved anime</ion-button>
+  
+</div>
+  </div>
+</ion-content>

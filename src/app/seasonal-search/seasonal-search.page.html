@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seasonal Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id= "container" >
+    <div id = display>
+      <div>
+      <ion-input [(ngModel)]="year" placeholder="Enter a year here"> </ion-input>
+      
+      <ion-input [(ngModel)]="season"  placeholder="Enter a Season here"> </ion-input>
+      <ion-button (click) = "search()"> search</ion-button>
+    </div>
+    <div>
+
+  <div *ngIf ="results;">
+    <div>
+    <img style="width:200px;height:200px;" [src] = "results[counter].image_url">
+    <div style=" display: flex; height: 100px; overflow:hidden;">
+      <ion-label>Anime Title:{{results[counter].title}}   </ion-label>
+      <ion-label>Anime Synopsis:{{results[counter].synopsis}}   </ion-label>
+      <ion-label>(Score: {{results[counter].score}}) </ion-label>
+      </div>
+    
+  </div>
+   <ion-button (click) = "prev()">prev</ion-button>
+   <ion-button (click) = "add()">add to faves</ion-button>
+   <ion-button (click) = "next()">next</ion-button>
+  </div>
+  </div>
+  </div>
+  <div>
+    
+    <ion-button [routerLink]="['/home']" routerLinkActive="router-link-active" >go back to main page</ion-button>
+  </div>
+  </div>
+</ion-content>

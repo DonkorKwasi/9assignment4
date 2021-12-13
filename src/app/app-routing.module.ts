@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'seasonal-search',
+    loadChildren: () => import('./seasonal-search/seasonal-search.module').then( m => m.SeasonalSearchPageModule)
+  },
+  {
+    path: 'fave-anime',
+    loadChildren: () => import('./fave-anime/fave-anime.module').then( m => m.FaveAnimePageModule)
+  },
 ];
 
 @NgModule({
